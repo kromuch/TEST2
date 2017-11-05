@@ -179,5 +179,9 @@ println(s"#4 - ${buf.size}")
 // #5
 
 // your code goes here
-
-println(s"#5 - ${/*answer #5*/}")
+var res55 : Long = 0
+import scala.io.Source
+val filepath = s"C:\\Users\\kromu\\Desktop\\task5.txt"
+val listOfLines = Source.fromFile(filepath).getLines.toList.map((s:String) => s.splitAt(11)._1)
+for (s <- listOfLines) {res55+=s.toLong}
+println(s"#5 - ${res55.toString.splitAt(10)._1}")
