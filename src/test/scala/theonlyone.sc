@@ -139,8 +139,42 @@ println(s"#3 - ${sum2}")
 // #4
 
 // your code goes here
-
-println(s"#4 - ${/*answer #4*/}")
+val task4 = List[Int](-1, -1, -2, -2, 1, -5, 1, 0, 1, 14, -8, 4, 5, -11, 13, 5, 7, -10, -4, 3, -6, 8, 6, 2, -9, -1, -4, 0)
+var buf = collection.mutable.Buffer[List[Int]]()
+val n = task4.size
+for(i <- 0 until n-2; j<- i + 1 until n-1; k <- j+1 until n){
+  if ((task4(i)+task4(j)+task4(k))==0) {
+    addToBuf(task4(i),task4(j),task4(k))
+  }
+}
+def addToBuf(el1:Int,el2:Int,el3:Int): Unit ={
+val temp = {
+  if (el1>el2)
+    {
+      if (el1>el3) {
+        if (el2 > el3) List(el1, el2, el3)
+        else List(el1, el3, el2)
+      }
+      else
+        {
+          List(el3,el1,el2)
+        }
+    }
+  else
+    {
+      if (el2>el3) {
+        if(el1>el3) List(el2,el1,el3)
+        else List(el2,el3,el1)
+      }
+      else
+        {
+          List(el3,el2,el1)
+        }
+    }
+}
+  if (!buf.contains(temp)) buf+=temp
+}
+println(s"#4 - ${buf.size}")
 
 // #5
 
